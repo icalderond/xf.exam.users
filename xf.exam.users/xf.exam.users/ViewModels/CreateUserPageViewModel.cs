@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Forms;
 using xf.exam.users.Models;
 using xf.exam.users.Services;
 
@@ -31,7 +32,7 @@ namespace xf.exam.users.ViewModels
             get => _AddUserCommand = _AddUserCommand ?? new ActionCommand<string>(
                async (param) =>
                 {
-                    await App.Current.MainPage.Navigation.PopModalAsync();
+                    await App.Current.MainPage.Navigation.PopAsync();
                     AddUser_Completed?.Invoke(this, new GenericEventArgs<User>(User));
                 });
         }

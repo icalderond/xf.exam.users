@@ -17,17 +17,21 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-            <Frame Grid.Row="0" Padding="0" BorderColor="Transparent" 
-                   BackgroundColor="Accent" 
-                   CornerRadius="70" 
-                   WidthRequest="140" 
-                   HeightRequest="140" 
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
-                </Frame.GestureRecognizers>
-                <Image Source="{Binding User.ProfileImage}" Aspect="AspectFill"/>
+                <Frame 
+                    Grid.Row="0" 
+                    Padding="0" 
+                    HasShadow="False"
+                    BorderColor="Transparent" 
+                    BackgroundColor="Accent" 
+                    CornerRadius="70" 
+                    WidthRequest="140" 
+                    HeightRequest="140" 
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="{Binding User.ProfileImage,Converter={StaticResource ImageConverter}}" Aspect="AspectFill"/>
                 </Frame>
                 <Label Grid.Row="1" Text="Click image for update" 
                        FontAttributes="Bold"

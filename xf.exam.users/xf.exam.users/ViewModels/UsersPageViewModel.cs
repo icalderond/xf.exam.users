@@ -53,7 +53,7 @@ namespace xf.exam.users.ViewModels
                 async (x) =>
                 {
                     createUserPage = new CreateUserPage();
-                    await App.Current.MainPage.Navigation.PushModalAsync(createUserPage);
+                    await App.Current.MainPage.Navigation.PushAsync(createUserPage);
                     createUserPage.ViewModel.AddUser_Completed -= (s, a) => UserList.Add(a.Result);
                     createUserPage.ViewModel.AddUser_Completed += (s, a) => UserList.Add(a.Result);
                 });

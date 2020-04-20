@@ -16,7 +16,9 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Grid.Column="0" Source="{Binding ProfileImage}"/>
+                        <Image Grid.Column="0" VerticalOptions="Center" 
+                               HorizontalOptions="Center" Source="{Binding ProfileImage,Converter={StaticResource ImageConverter}}" Aspect="AspectFit" 
+                               WidthRequest="50" HeightRequest="50"/>
                         <StackLayout Grid.Column="1">
                             <Label>
                                 <Label.FormattedText>
@@ -35,7 +37,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
+        <Grid Padding="15,20">
             <ListView ItemsSource="{Binding UserList}"
                       ItemTemplate="{StaticResource UserTemplate}"
                       HasUnevenRows="True"

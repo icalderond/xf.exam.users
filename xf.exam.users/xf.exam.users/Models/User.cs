@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Xamarin.Forms;
 using xf.exam.users.ViewModels;
 
 namespace xf.exam.users.Models
@@ -59,5 +60,12 @@ namespace xf.exam.users.Models
             get => _ProfileImage;
             set => Set(ref _ProfileImage, value);
         }
+
+        //private UriImageSource _ProfileImage;
+        //public UriImageSource ProfileImage
+        //{
+        //    get => _ProfileImage;
+        //    set => Set(ref _ProfileImage, value);
+        //}
     }
 }
