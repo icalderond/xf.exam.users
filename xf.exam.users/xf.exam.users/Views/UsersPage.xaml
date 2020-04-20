@@ -4,12 +4,43 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="xf.exam.users.Views.UsersPage">
+             x:Class="xf.exam.users.Views.UsersPage" IsBusy="{Binding IsBusy}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="UserTemplate">
+                <ViewCell>
+                    <StackLayout Padding="10">
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding FirstName}" FontSize="20" FontAttributes="Bold"/>
+                                    <Span Text=" "/>
+                                    <Span Text="{Binding LastName}" FontSize="20"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label FontSize="15" Text="{Binding Phone}"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0">
+                <Label Text="Users from GoRest" FontSize="Title" FontAttributes="Bold"
+                       Margin="10,20"/>
+            </StackLayout>
+            <ListView Grid.Row="1" ItemsSource="{Binding UserList}"
+                      ItemTemplate="{StaticResource UserTemplate}"
+                      HasUnevenRows="True"/>
+            <Button Text="+" FontSize="30" Grid.RowSpan="2" HorizontalOptions="End" VerticalOptions="End"
+                    CornerRadius="30" Margin="0,0,10,10" WidthRequest="60" HeightRequest="60"
+                    BackgroundColor="Accent" TextColor="White" BorderColor="Transparent" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
