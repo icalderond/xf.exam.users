@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xf.exam.users.Android", "xf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xf.exam.users.iOS", "xf.exam.users\xf.exam.users.iOS\xf.exam.users.iOS.csproj", "{08953B8C-95AC-4392-861B-8579174F2FBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xf.exam.users", "xf.exam.users\xf.exam.users\xf.exam.users.csproj", "{5E210925-3A6B-43EB-B93E-21E2DB7664B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xf.exam.users", "xf.exam.users\xf.exam.users\xf.exam.users.csproj", "{5E210925-3A6B-43EB-B93E-21E2DB7664B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
