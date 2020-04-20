@@ -4,12 +4,49 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="xf.exam.users.Views.CreateUserPage">
+             x:Class="xf.exam.users.Views.CreateUserPage"
+             Title="Add User">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+            <Frame Grid.Row="0" Padding="0" BorderColor="Transparent" 
+                   BackgroundColor="Accent" 
+                   CornerRadius="70" 
+                   WidthRequest="140" 
+                   HeightRequest="140" 
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                </Frame.GestureRecognizers>
+                <Image Source="{Binding User.ProfileImage}" Aspect="AspectFill"/>
+                </Frame>
+                <Label Grid.Row="1" Text="Click image for update" 
+                       FontAttributes="Bold"
+                       VerticalOptions="Start" 
+                       HorizontalOptions="Center"
+                       Margin="0,-30,0,0"/>
+            </Grid>
+
+            <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="Start"
+                         Margin="15,20">
+                <Entry Text="{Binding User.FirstName}"
+                       Placeholder="First Name"/>
+                <Entry Text="{Binding User.LastName}"
+                       Placeholder="Last Name"/>
+                <Entry Text="{Binding User.Phone}"
+                       Keyboard="Telephone"
+                       Placeholder="Phone"/>
+                <Button Text="Guardar" Command="{Binding AddUserCommand}"/>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

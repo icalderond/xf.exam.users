@@ -8,6 +8,8 @@ namespace xf.exam.users.ViewModels
 {
     public class UsersPageViewModel : NotificationEnabledObject
     {
+        CreateUserPage createUserPage;
+
         public UsersPageViewModel()
         {
             _ = LoadData();
@@ -15,8 +17,20 @@ namespace xf.exam.users.ViewModels
 
         private async Task LoadData()
         {
-            var users = await UsersBL.GetUsers();
-            UserList = new ObservableCollection<User>(users);
+            try
+            {
+                IsBusy = true;
+                var users = await UsersBL.GetUsers();
+                UserList = new ObservableCollection<User>(users);
+            }
+            catch (System.Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
         private UsersBL _UsersBL;
@@ -35,10 +49,21 @@ namespace xf.exam.users.ViewModels
         private ActionCommand<string> _AddUserCommand;
         public ActionCommand<string> AddUserCommand
         {
-            get => _AddUserCommand = _AddUserCommand ?? new ActionCommand<string>(async (x) =>
-               {
-                   await App.Current.MainPage.Navigation.PushModalAsync(new CreateUserPage());
-               });
+            get => _AddUserCommand = _AddUserCommand ?? new ActionCommand<string>(
+                async (x) =>
+                {
+                    createUserPage = new CreateUserPage();
+                    await App.Current.MainPage.Navigation.PushModalAsync(createUserPage);
+                    createUserPage.ViewModel.AddUser_Completed -= (s, a) => UserList.Add(a.Result);
+                    createUserPage.ViewModel.AddUser_Completed += (s, a) => UserList.Add(a.Result);
+                });
+        }
+
+        private bool _IsBusy;
+        public bool IsBusy
+        {
+            get => _IsBusy;
+            set => Set(ref _IsBusy, value);
         }
     }
 }

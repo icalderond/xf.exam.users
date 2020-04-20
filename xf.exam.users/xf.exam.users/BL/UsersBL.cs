@@ -23,5 +23,6 @@ namespace xf.exam.users.Services
             return listUsers;
         }
 
+        public async Task<string> GetProfileImage() => await UsersAPI.GetProfileImage();
     }
 }
