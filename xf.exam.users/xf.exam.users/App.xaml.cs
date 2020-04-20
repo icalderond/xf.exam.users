@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using xf.exam.users.Views;
 
 namespace xf.exam.users
 {
@@ -10,7 +11,7 @@ namespace xf.exam.users
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new UsersPage();
         }
 
         protected override void OnStart()
