@@ -9,6 +9,7 @@ namespace xf.exam.users.Services
     {
         private readonly WebClient client;
         private readonly string EndPointUsers = $"https://gorest.co.in/public-api/users?_format=json&access-token={AppSettings.TokenGorest}";
+        private readonly string EndPointProfileImage = $"https://randomuser.me/api/?inc=picture";
 
         public UsersAPI()
         {
@@ -21,6 +22,13 @@ namespace xf.exam.users.Services
             var json = await client.DownloadStringTaskAsync(new Uri(EndPointUsers));
             var jsonParsed = JObject.Parse(json);
             return jsonParsed["result"].ToString();
+        }
+
+        public async Task<string> GetProfileImage()
+        {
+            var json = await client.DownloadStringTaskAsync(new Uri(EndPointProfileImage));
+            var jsonParsed = JObject.Parse(json);
+            return jsonParsed["results"][0]["picture"]["large"].ToString();
         }
     }
 }

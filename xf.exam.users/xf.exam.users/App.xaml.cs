@@ -10,8 +10,7 @@ namespace xf.exam.users
         public App()
         {
             InitializeComponent();
-
-            MainPage = new UsersPage();
+            MainPage = new NavigationPage(new UsersPage());
         }
 
         protected override void OnStart()

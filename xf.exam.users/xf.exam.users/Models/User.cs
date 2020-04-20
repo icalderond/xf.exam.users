@@ -33,5 +33,7 @@ namespace xf.exam.users.Models
 
         [JsonProperty("status")]
         public string Status { get; set; }
+
+        public string ProfileImage { get; set; }
     }
 }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using xf.exam.users.Models;
 using xf.exam.users.Services;
+using xf.exam.users.Views;
 
 namespace xf.exam.users.ViewModels
 {
@@ -32,6 +30,15 @@ namespace xf.exam.users.ViewModels
         {
             get => _UserList;
             set => Set(ref _UserList, value);
+        }
+
+        private ActionCommand<string> _AddUserCommand;
+        public ActionCommand<string> AddUserCommand
+        {
+            get => _AddUserCommand = _AddUserCommand ?? new ActionCommand<string>(async (x) =>
+               {
+                   await App.Current.MainPage.Navigation.PushModalAsync(new CreateUserPage());
+               });
         }
     }
 }
